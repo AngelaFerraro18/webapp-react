@@ -28,18 +28,21 @@ function MoviesList() {
     useEffect(getMovies, [search]);
 
     return (<>
-        <h2>Lista dei film:</h2>
-        <form onSubmit={searchMovies}>
-            <input
-                type="text"
-                placeholder="Cerca..."
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-            />
-            <button type="submit">Cerca</button>
+        <h2 className="mb-2">Lista dei film:</h2>
+        <form onSubmit={searchMovies} className="mb-5 col-3">
+            <div className="input-group">
+                <input
+                    className="form-control"
+                    type="text"
+                    placeholder="Cerca..."
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                />
+                <button className="btn btn-primary" type="submit">Cerca</button>
+            </div>
         </form>
 
-        <ul>
+        <ul className="d-flex gap-3 row justify-content-center mb-5">
             {movies.length ? movies.map(movie => <MovieCard key={movie.id} data={movie} />) : <div>Il film non è presente!</div>}
         </ul>
     </>
