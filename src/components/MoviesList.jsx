@@ -21,7 +21,12 @@ function MoviesList() {
     return (<>
         <h2>Lista dei film:</h2>
         <ul>
-            {movies.map(movie => <li key={movie.id}>{movie.title}</li>)}
+            {movies.length ? movies.map(movie => <li key={movie.id}>
+                <img src={movie.image} alt={movie.title} />
+                <h3>{movie.title}</h3>
+                <p>Director: <strong>{movie.director}</strong></p>
+                <p>Description: <em>{movie.abstract}</em></p>
+            </li>) : <div>Il film non è presente!</div>}
         </ul>
     </>
     )
