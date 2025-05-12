@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import MovieCard from "./MovieCard";
 
 function MoviesList() {
 
@@ -11,7 +11,7 @@ function MoviesList() {
     function getMovies() {
         axios.get(`${url}/movies`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setMovies(res.data);
             })
             .catch(err => console.log(err))
@@ -22,13 +22,7 @@ function MoviesList() {
     return (<>
         <h2>Lista dei film:</h2>
         <ul>
-            {movies.length ? movies.map(movie => <li key={movie.id}>
-                <img src={movie.image} alt={movie.title} />
-                <h3>{movie.title}</h3>
-                <p>Director: <strong>{movie.director}</strong></p>
-                <p>Description: <em>{movie.abstract}</em></p>
-                <Link to={`/movies/${movie.id}`}>More info...</Link>
-            </li>) : <div>Il film non è presente!</div>}
+            {movies.length ? movies.map(movie => <MovieCard key={movie.id} data={movie} />) : <div>Il film non è presente!</div>}
         </ul>
     </>
     )
