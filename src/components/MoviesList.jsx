@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function MoviesList() {
 
@@ -26,6 +27,7 @@ function MoviesList() {
                 <h3>{movie.title}</h3>
                 <p>Director: <strong>{movie.director}</strong></p>
                 <p>Description: <em>{movie.abstract}</em></p>
+                <Link to={`/movies/${movie.id}`}>More info...</Link>
             </li>) : <div>Il film non è presente!</div>}
         </ul>
     </>
