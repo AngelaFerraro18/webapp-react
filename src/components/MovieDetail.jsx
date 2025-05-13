@@ -25,7 +25,7 @@ function MovieDetail() {
 
     return <>
         <section className="d-flex mb-5 gap-4 align-items-end">
-            <img src={movie.image} alt={movie.title} className="w-25 rounded" />
+            <img src={movie.image} alt={movie.title} className="w-25 h-100 rounded" />
             <div>
                 <h2 className="mb-3">{movie.title}</h2>
                 <p>Director: <strong>{movie.director}</strong></p>
