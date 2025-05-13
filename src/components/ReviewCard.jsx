@@ -1,3 +1,5 @@
+import StarRating from "./StarRating";
+
 function ReviewCard({ data }) {
 
     const { name, text, vote } = data;
@@ -7,7 +9,7 @@ function ReviewCard({ data }) {
             <div className="card-body">
                 <h4>{name}</h4>
                 <p>{text}</p>
-                <p><em>Vote:</em> {vote}</p>
+                <p><em>Vote:</em> <StarRating vote={vote} /></p>
             </div>
         </div>
     )
