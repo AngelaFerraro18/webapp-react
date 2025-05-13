@@ -24,21 +24,22 @@ function MovieDetail() {
     useEffect(getMovie, [id]);
 
     return <>
-        <img src={movie.image} alt={movie.title} />
-        <div>
-            <h2>{movie.title}</h2>
-            <p>Director: <strong>{movie.director}</strong></p>
-            <p>Description: <em>{movie.abstract}</em></p>
-        </div>
+        <section className="d-flex mb-5 gap-4 align-items-end">
+            <img src={movie.image} alt={movie.title} className="w-25 rounded" />
+            <div>
+                <h2 className="mb-3">{movie.title}</h2>
+                <p>Director: <strong>{movie.director}</strong></p>
+                <p>Description: <em>{movie.abstract}</em></p>
+            </div>
+        </section>
 
         <div>
-            <h3>Our reviews:</h3>
-            <div>
+            <div className="d-flex justify-content-between align-items-center mb-4">
+                <h3>Our reviews:</h3>
                 <p>Vote: <StarRating vote={Math.floor(Number(movie.mean_votes))} /></p>
             </div>
 
             {review.length ? review.map(rev => <ReviewCard data={rev} key={rev.id} />) : <p>Nessuna recensione</p>}
-
         </div>
     </>
 }
