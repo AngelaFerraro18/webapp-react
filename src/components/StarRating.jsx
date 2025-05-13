@@ -4,8 +4,7 @@ function StarRating({ vote }) {
 
     return (
         <>
-            {[...Array(maxValue)].map((_, index) => index < vote ? (
-                <i className="fa-solid fa-star"></i>) : (<i className="fa-regular fa-star"></i>))}
+            {[...Array(maxValue)].map((_, index) => <i key={index} className={`fa-star fa-${index < vote ? 'solid' : 'regular'}`}></i>)}
         </>
     );
 }
