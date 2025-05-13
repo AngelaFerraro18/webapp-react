@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReviewCard from "./ReviewCard";
 
 function MovieDetail() {
     const { id } = useParams();
@@ -35,14 +36,7 @@ function MovieDetail() {
                 <p>Vote: {movie.mean_votes}</p>
             </div>
 
-            {review.length ? review.map(rev =>
-                <div key={rev.id} className="card mb-4">
-                    <div className="card-body">
-                        <h4>{rev.name}</h4>
-                        <p>{rev.text}</p>
-                        <p><em>Vote:</em> {rev.vote}</p>
-                    </div>
-                </div>) : <p>Nessuna recensione</p>}
+            {review.length ? review.map(rev => <ReviewCard data={rev} key={rev.id} />) : <p>Nessuna recensione</p>}
 
         </div>
     </>
