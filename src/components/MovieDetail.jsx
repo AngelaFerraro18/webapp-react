@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 import StarRating from "./StarRating";
+import FormReview from "./FormReview";
 
 function MovieDetail() {
     const { id } = useParams();
@@ -41,6 +42,17 @@ function MovieDetail() {
 
             {review.length ? review.map(rev => <ReviewCard data={rev} key={rev.id} />) : <p>Nessuna recensione</p>}
         </div>
+
+        <section>
+            <div className="card mb-5">
+                <div className="card-header">
+                    Add a new review!
+                </div>
+                <div className="card-body">
+                    <FormReview movieId={id} reloadReviews={getMovie} />
+                </div>
+            </div>
+        </section>
     </>
 }
 
