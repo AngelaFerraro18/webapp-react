@@ -17,7 +17,6 @@ function MovieDetail() {
         axios.get(`${url}/movies/${id}`)
             .then(res => {
                 setMovie(res.data);
-                console.log(res.data.reviews);
                 setReview(res.data.reviews);
             })
             .catch(err => console.error(err))
@@ -49,7 +48,7 @@ function MovieDetail() {
         </div>
 
         <section>
-            <button type="button" onClick={isShow} class="btn btn-primary mb-3">{show ? 'Close window' : 'Add your review!'}</button>
+            <button type="button" onClick={isShow} className="btn btn-primary mb-3">{show ? 'Close window' : 'Add your review!'}</button>
             {show && <div className="card mb-5">
                 <div className="card-body">
                     <FormReview movieId={id} reloadReviews={getMovie} />
