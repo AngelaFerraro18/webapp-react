@@ -11,6 +11,7 @@ function MovieDetail() {
 
     const [movie, setMovie] = useState({});
     const [review, setReview] = useState([]);
+    const [show, setShow] = useState(false);
 
     function getMovie() {
         axios.get(`${url}/movies/${id}`)
@@ -20,6 +21,10 @@ function MovieDetail() {
                 setReview(res.data.reviews);
             })
             .catch(err => console.error(err))
+    }
+
+    function isShow() {
+        setShow(!show);
     }
 
     useEffect(getMovie, [id]);
@@ -44,14 +49,12 @@ function MovieDetail() {
         </div>
 
         <section>
-            <div className="card mb-5">
-                <div className="card-header">
-                    Add a new review!
-                </div>
+            <button type="button" onClick={isShow} class="btn btn-primary mb-3">{show ? 'Close window' : 'Add your review!'}</button>
+            {show && <div className="card mb-5">
                 <div className="card-body">
                     <FormReview movieId={id} reloadReviews={getMovie} />
                 </div>
-            </div>
+            </div>}
         </section>
     </>
 }
