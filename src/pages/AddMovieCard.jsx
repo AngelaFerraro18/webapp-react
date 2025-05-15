@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function AddMovieCard() {
@@ -13,9 +14,11 @@ function AddMovieCard() {
 
     const [formData, setFormData] = useState(initialValues);
 
+    const navigate = useNavigate();
+
     function handleFormData(event) {
 
-        let { name, value, files } = event.target;
+        const { name, value, files } = event.target;
 
         let currentValue = value;
 
@@ -44,8 +47,9 @@ function AddMovieCard() {
             }
         })
             .then(res => {
-                console.log(res.data.message);
+                navigate("/");
                 setFormData(initialValues);
+
             })
             .catch(err => console.error(err))
     }
