@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function MovieCard({ data }) {
 
-    const { id, image, title, director, abstract } = data;
+    const { image, title, director, abstract, slug } = data;
 
     return (
         <li className="card col-3 p-2 border-info-subtle border-3">
@@ -11,7 +11,7 @@ function MovieCard({ data }) {
                 <h3 className="card-title">{title}</h3>
                 <p className="card-text">Director: <strong>{director}</strong></p>
                 <p className="card-text">Description: <em>{abstract}</em></p>
-                <Link to={`/movies/${id}`}>More info...</Link>
+                <Link to={`/movies/${slug}`}>More info...</Link>
             </div>
         </li>
     )
