@@ -5,7 +5,7 @@ function Header() {
         <>
             <header className="p-4 bg-info mb-4">
                 <div className="container text-center">
-                    <Link className="fs-3 text-decoration-none text-white fw-bold" to={'/movies'}>Movies</Link>
+                    <Link className="fs-3 text-decoration-none text-white fw-bold" to={'/'}>Movies</Link>
                 </div>
             </header>
         </>
