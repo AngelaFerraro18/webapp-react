@@ -2,22 +2,31 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import MovieCard from "../components/MovieCard";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import GlobalContext from "../contexts/globalContext";
 
 function MoviesList() {
 
     const [movies, setMovies] = useState([]);
     const [search, setSearch] = useState('');
 
+    const { setIsLoading } = useContext(GlobalContext);
+
     const url = 'http://127.0.0.1:3000';
 
     function getMovies() {
+
+        setIsLoading(true);
+
         axios.get(`${url}/movies`, {
             params: { search }
         })
             .then(res => {
                 setMovies(res.data);
+                // setIsLoading(false);
             })
             .catch(err => console.log(err))
+            .finally(() => setIsLoading(false));
     }
 
     function searchMovies(event) {

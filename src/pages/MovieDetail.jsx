@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import ReviewCard from "../components/ReviewCard";
 import StarRating from "../components/StarRating";
 import FormReview from "../components/FormReview";
+import { useContext } from "react";
+import GlobalContext from "../contexts/globalContext";
 
 function MovieDetail() {
     const { id } = useParams();
@@ -12,14 +14,19 @@ function MovieDetail() {
     const [movie, setMovie] = useState({});
     const [review, setReview] = useState([]);
     const [show, setShow] = useState(false);
+    const { setIsLoading } = useContext(GlobalContext);
 
     function getMovie() {
+
+        setIsLoading(true);
+
         axios.get(`${url}/movies/${id}`)
             .then(res => {
                 setMovie(res.data);
                 setReview(res.data.reviews);
             })
             .catch(err => console.error(err))
+            .finally(() => setIsLoading(false));
     }
 
     function isShow() {
